@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 // use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 
@@ -13,24 +14,21 @@ class Post extends Model implements HasMedia
     //
     use InteractsWithMedia;
 
-    // public function registerMediaConversions(Media $media = null)
-    // {
-    //     $this->addMediaConversion('thumb')
-    //         ->width(130)
-    //         ->height(130);
-    // }
 
-    // public function registerMediaCollections()
-    // {
-    //     $this->addMediaCollection('main')->singleFile();
-    //     $this->addMediaCollection('my_multi_collection');
-    // }
-    // public function fields(Request $request)
-    // {
-    //     return [
-    //         Images::make('Main image', 'main') // second parameter is the media collection name
-    //             ->conversionOnIndexView('thumb') // conversion used to display the image
-    //             ->rules('required'), // validation rules
-    //     ];
-    // }
+    public function registerMediaConversions(Media $media = null): void
+    {
+
+        $this->addMediaConversion('tiny')
+              ->width(640);
+        $this->addMediaConversion('small')
+              ->width(768);
+        $this->addMediaConversion('medium')
+              ->width(1024);
+        $this->addMediaConversion('large')
+              ->width(1280);
+        $this->addMediaConversion('xl')
+              ->width(2000);
+        
+    }
+    
 }
