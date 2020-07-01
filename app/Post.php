@@ -30,5 +30,9 @@ class Post extends Model implements HasMedia
               ->width(2000);
         
     }
+
+    public function user(){
+          $this->belongsTo('App\User');
+    }
     
 }

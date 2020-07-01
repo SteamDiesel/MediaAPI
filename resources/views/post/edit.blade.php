@@ -14,11 +14,8 @@
                 <div class="card-body">
                     <input value="{{$post->title}}" class="form-control form-control-lg mb-2" name="title" id="title" type="text" placeholder="Title">
                     <input value="{{$post->author}}" class="form-control form-control-lg mb-2" name="author" id="author" type="text" placeholder="Author">
-                    <div id="editor-container">
-                        
-                    </div>
-                    <input type="hidden" name="about">
-                    <!-- <textarea class="form-control mb-2" name="body" id="body" rows="4" placeholder="Tell a story or share your thoughts on these pictures.">{{$post->body}}</textarea> -->
+                    
+                    <textarea class="form-control mb-2" name="body" id="body" rows="4" placeholder="Tell a story or share your thoughts on these pictures.">{{$post->body}}</textarea>
                     <button type="submit" value="upload" class="btn btn-primary">Save</button>
                 </div>
             </form>
@@ -37,6 +34,7 @@
                         <input type="file" name="photo" multiple class="custom-file-input" id="custom-file-input">
                         <label class="custom-file-label" for="custom-file-input">Choose Photo</label>
                     </div>
+                    <input id="description" name="description" class="form-control form-control-md mb-2" type="text" placeholder="Brief Description (Max Length: 255 Characters)">
                     <button type="submit" value="upload" class="btn btn-primary">Save Photo</button>
                 </div>
             </form>
@@ -53,6 +51,11 @@
             @foreach($media as $img)
             <div class="">
                 <img class="mb-2 mx-1 img-fluid" src="{{$img->getUrl('small')}}" alt="">
+                <p>
+                    @if($img->getCustomProperty('description'))
+                        {{$img->getCustomProperty('description')}}
+                    @endif
+                </p>
             </div>
                 
             @endforeach

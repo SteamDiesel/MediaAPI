@@ -33,17 +33,13 @@ Route::post('/data', function(Request $request){
         $size = '';
     }
     
-
-    $posts = Post::all()->sortByDesc('updated_at');
+    $posts = Post::where(['is_published' => true])->orderBy('updated_at')->get();
     
     foreach ($posts as $post){
-        
-        $stack = array();
         $media = $post->getMedia();
-        foreach ($media as $image){
-            array_push($stack, $image->getUrl($size));
+        foreach ($media as $m){
+            $m->image = $m->getUrl($size);
         }
-        $post->images = $stack;
     }
     
     return response()->json([
