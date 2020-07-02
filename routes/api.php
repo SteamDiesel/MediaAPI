@@ -1,6 +1,6 @@
 <?php
 
-
+use App\About;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +32,7 @@ Route::post('/data', function(Request $request){
     } else {
         $size = '';
     }
+    $abouts = About::all();
     
     $posts = Post::where(['is_published' => true])->orderBy('updated_at')->get();
     
@@ -43,6 +44,7 @@ Route::post('/data', function(Request $request){
     }
     
     return response()->json([
-          "posts" => $posts
+          "posts" => $posts,
+          "abouts" => $abouts
     ], 200);
 });

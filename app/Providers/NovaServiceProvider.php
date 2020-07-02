@@ -46,6 +46,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 "jason.lloyd.law@gmail.com",
                 "toby@tigelectrical.com",
                 "tashmpc81@hotmail.com"
+                // Remember to update the home controller redirect array if this list is updated
             ]);
         });
     }

@@ -1,4 +1,4 @@
-<div class="card w-50">
+<div class="card ">
 
             <form action="{{route('post.store')}}" method="post">
                 @csrf

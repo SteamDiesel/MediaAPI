@@ -2,33 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center mb-4">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    You are logged in!
-                    <div>
-                        You can use an alternative UI if you want to edit the text with headings and paragraphs.
-                        <a class="btn btn-sm btn-primary" href="/nova">Use Nova Dashboard</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-
-
-
-    <div class="row justify-content-center mb-4">
+    <div class="mb-4">
         
         <x-new-post/>
     </div>
@@ -58,5 +32,5 @@
         
     </div>
     @endif
-</div>
+
 @endsection
