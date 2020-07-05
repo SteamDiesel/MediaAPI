@@ -4,7 +4,9 @@ namespace App\Nova;
 
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\ID;
@@ -38,6 +40,8 @@ class Post extends Resource
         'id','title','body','author','is_published'
     ];
 
+
+
     /**
      * Get the fields displayed by the resource.
      *
@@ -51,8 +55,8 @@ class Post extends Resource
             Text::make('Title')->sortable(),
             Trix::make('Body')->hideFromIndex(),
             Text::make('Author')->sortable(),
+            BelongsTo::make('User', 'user')->sortable(),
             Boolean::make('Is Published')->sortable(),
-            // Files::make('Single file', 'default'),
             Images::make('Images', 'default')->croppable(true)->customPropertiesFields([
                 Markdown::make('Description'),
             ]),

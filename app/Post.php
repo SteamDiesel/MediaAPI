@@ -14,6 +14,8 @@ class Post extends Model implements HasMedia
     //
     use InteractsWithMedia;
 
+    
+
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -32,7 +34,7 @@ class Post extends Model implements HasMedia
     }
 
     public function user(){
-          $this->belongsTo('App\User');
+          return $this->belongsTo('App\User');
     }
     
 }

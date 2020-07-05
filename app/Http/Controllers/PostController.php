@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Auth;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class PostController extends Controller
 {
@@ -151,6 +152,30 @@ class PostController extends Controller
 
         return view('post.edit', ['post' => $post, 'media' => $media]);
     }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Post  $post
+     * @return \Illuminate\Http\Response
+     */
+    public function updatephoto(Request $request, $id)
+    {
+        //
+        $mediaItem = Media::find($id);
+
+        $mediaItem->setCustomProperty('description', $request->description); // adds a new custom property or updates an existing one
+       
+        $mediaItem->save();
+
+        $new_description = $mediaItem->getCustomProperty('description');
+
+        return response()->json([
+            "message"=>"Success!",
+            "description" => $new_description
+        ], 200);
+    }
+
 
     /**
      * Remove the specified resource from storage.

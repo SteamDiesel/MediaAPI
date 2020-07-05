@@ -14,7 +14,7 @@
                 <div class="card-body">
                     <input value="{{$post->title}}" class="form-control form-control-lg mb-2" name="title" id="title" type="text" placeholder="Title">
                     <input value="{{$post->author}}" class="form-control form-control-lg mb-2" name="author" id="author" type="text" placeholder="Author">
-                    
+
                     <textarea class="form-control mb-2" name="body" id="body" rows="4" placeholder="Tell a story or share your thoughts on these pictures.">{{$post->body}}</textarea>
                     <button type="submit" value="upload" class="btn btn-primary">Save</button>
                 </div>
@@ -40,27 +40,23 @@
             </form>
 
         </div>
-        
 
+
+
+    </div>
+
+</div>
+<div class="flex-wrap row justify-content-center">
+    @if($media)
+    @foreach($media as $img)
+    <div>
+                <photo-component :image_id="{{$img->id}}" :source="'{{$img->getUrl('small')}}'" :description="'{{$img->getCustomProperty('description')}}'"/>
 
     </div>
     
+    @endforeach
+    @endif
 </div>
-<div class="flex-wrap row justify-content-center">
-        @if($media)
-            @foreach($media as $img)
-            <div class="">
-                <img class="mb-2 mx-1 img-fluid" src="{{$img->getUrl('small')}}" alt="">
-                <p>
-                    @if($img->getCustomProperty('description'))
-                        {{$img->getCustomProperty('description')}}
-                    @endif
-                </p>
-            </div>
-                
-            @endforeach
-        @endif
-    </div>
 
 </div>
 @endsection

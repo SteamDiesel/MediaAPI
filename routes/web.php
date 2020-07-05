@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,5 @@ Route::post('/post', 'PostController@store')->name('post.store');
 Route::get('/post/{post}/edit', 'PostController@edit');
 Route::post('/post/{post}/update', 'PostController@update');
 Route::post('/post/{post}/photo', 'PostController@photo');
+Route::post('/update_post_photo/{id}', 'PostController@updatephoto');
+
