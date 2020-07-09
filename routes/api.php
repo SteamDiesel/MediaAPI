@@ -34,7 +34,7 @@ Route::post('/data', function(Request $request){
     }
     $abouts = About::all();
     
-    $posts = Post::where(['is_published' => true])->orderBy('updated_at')->get();
+    $posts = Post::where(['is_published' => true])->orderBy('updated_at', 'desc')->get();
     
     foreach ($posts as $post){
         $media = $post->getMedia();
