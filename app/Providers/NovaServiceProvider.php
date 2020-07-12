@@ -45,7 +45,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             return in_array($user->email, [
                 "jason.lloyd.law@gmail.com",
                 "toby@tigelectrical.com",
-                "tashmpc81@hotmail.com"
+                "tashmpc81@hotmail.com",
+                "cedarbifolds@gmail.com "
                 // Remember to update the home controller redirect array if this list is updated
             ]);
         });
